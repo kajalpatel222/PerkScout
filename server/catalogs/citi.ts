@@ -1,0 +1,121 @@
+import {defineBenefit} from '../catalog-entry';
+
+const reviewed = '2026-10-13';
+const customTerms = 'https://www.citi.com/usc/Multi/Featured/default.htm';
+const costcoProduct = 'https://www.citi.com/credit-cards/costco-anywhere-visa-card';
+const costcoArticle = 'https://www.citi.com/credit-cards/understanding-credit-cards/costco-citi-credit-card-benefits';
+const costcoFaq = 'https://www.citi.com/CRD/PDF/faqs.pdf';
+
+// Existing U.S. personal cardholders. Acquisition offers and financing are excluded.
+export const citiBenefits = [
+  defineBenefit({
+    id:'custom-top-category', cardId:'citi-custom', title:'5% in your top eligible category', category:'Rewards',
+    topic:'rewards',
+    summary:'Earn 5% in your highest eligible spending category on the first $500 each billing cycle, then 1%.',
+    use:'Citi selects the category automatically from posted purchases, net of returns.',
+    enrollment:'No category activation.', payment:'Use Custom Cash; merchant coding determines eligibility.',
+    limit:'One category per billing cycle: restaurants, gas stations, grocery stores, select travel, select transit, select streaming, drugstores, home improvement, fitness clubs or live entertainment.',
+    exclusions:'Category exclusions apply; warehouse-club groceries and gas do not qualify. Cash advances, fees and cash-like transactions earn no points.',
+    missing:['Billing-cycle dates, merchant coding and spending already posted are unknown.'],
+    sourceUrl:customTerms, documentTitle:'Citi — Summary of Citi Custom Cash Card Terms and Conditions',
+    section:'Highest Spend Category; Merchant Classification; Only Purchases Earn Points',
+    retrievedAt:reviewed, evidenceStatus:'summary_only', tracking:{kind:'billing_cycle'},
+  }),
+  defineBenefit({
+    id:'custom-base-rewards', cardId:'citi-custom', title:'1% on other eligible purchases', category:'Rewards', topic:'rewards',
+    summary:'Earn 1% on other eligible purchases, as ThankYou Points.',
+    use:'Pay with Custom Cash.', payment:'Eligible purchases, less returns.',
+    limit:'No earnings cap on the base rate.', exclusions:'Transfers, cash advances, fees and cash-like transactions excluded.',
+    sourceUrl:customTerms, documentTitle:'Citi — Summary of Citi Custom Cash Card Terms and Conditions',
+    section:'Earning Points; Only Purchases Earn Points', retrievedAt:reviewed, evidenceStatus:'summary_only', tracking:{kind:'ongoing'},
+  }),
+  defineBenefit({
+    id:'custom-redemption', cardId:'citi-custom', title:'Redeem points for cash back', category:'Rewards', topic:'rewards',
+    summary:'Redeem ThankYou Points for statement credit, direct deposit or check.',
+    use:'Review redemption options in Citi.', limit:'No minimum for statement credit or direct deposit.',
+    exclusions:'Other redemption values vary.', missing:['Points balance is unknown.'],
+    sourceUrl:customTerms, documentTitle:'Citi — Custom Cash Rewards FAQ', section:'How do you redeem for rewards?',
+    retrievedAt:reviewed, evidenceStatus:'summary_only', tracking:{kind:'ongoing'},
+  }),
+  defineBenefit({
+    id:'costco-gas', cardId:'citi-costco', title:'5% Costco gas / 4% eligible gas and EV charging', category:'Rewards', topic:'travel',
+    summary:'Earn 5% at Costco gas and 4% on other eligible gas/EV charging; the rates share a $7,000 annual spending cap, then earn 1%.',
+    use:'Pay with your Costco Citi card; check Citi for merchant eligibility and spending counted.',
+    payment:'Eligible card purchases.', limit:'$7,000 is combined spending, not a credit balance. Reward totals follow January–December statements.',
+    exclusions:'Some fuel merchants and purchases do not qualify for the elevated rate; check issuer terms.',
+    missing:['Spending already counted and remaining cap are unknown.'],
+    sourceUrl:costcoFaq, documentTitle:'Costco Credit Card Reward Certificate FAQs', section:'Reward changes; annual reward period', page:7,
+    effectiveFrom:'2025-01-19', retrievedAt:reviewed, evidenceStatus:'summary_only', tracking:{kind:'ongoing'},
+    timing:{group:'annual',label:'Annual combined spending cap'},
+  }),
+  defineBenefit({
+    id:'costco-dining-travel', cardId:'citi-costco', title:'3% on restaurants and eligible travel', category:'Rewards', topic:'travel',
+    summary:'Earn 3% on qualifying dining and travel, including Costco Travel.', use:'Pay with your Costco Citi card.',
+    limit:'No category earnings cap.',
+    exclusions:'Certain embedded restaurants, bakeries, timeshares, campgrounds, B&Bs and train/commuter travel earn 1%. Merchant coding applies.',
+    sourceUrl:costcoProduct, documentTitle:'Costco Anywhere Visa Card by Citi', section:'Cash back FAQs',
+    retrievedAt:reviewed, evidenceStatus:'summary_only', tracking:{kind:'ongoing'},
+  }),
+  defineBenefit({
+    id:'costco-shopping', cardId:'citi-costco', title:'2% at Costco; 1% on other purchases', category:'Rewards', topic:'rewards',
+    summary:'Earn 2% on other Costco/Costco.com purchases; 1% on other eligible purchases.',
+    use:'Pay with your Costco Citi card.', limit:'No earnings cap.', exclusions:'Higher-rate categories have separate rules.',
+    sourceUrl:costcoProduct, documentTitle:'Costco Anywhere Visa Card by Citi', section:'Cash back rewards',
+    retrievedAt:reviewed, evidenceStatus:'summary_only', tracking:{kind:'ongoing'},
+  }),
+  defineBenefit({
+    id:'costco-certificate', cardId:'citi-costco', title:'Annual reward certificate', category:'Rewards', topic:'rewards',
+    summary:'Certificates arrive after the February statement closes and expire December 31 of the issuance year.',
+    use:'If issued, access your certificate in Citi and redeem at a U.S. Costco warehouse, including Puerto Rico.',
+    enrollment:'Issuance requires an open account and at least $1 earned through the prior December statement.',
+    limit:'The certificate represents earned rewards, not a fixed annual credit.',
+    exclusions:'Not redeemable at Costco.com, Costco Travel or as a card payment. Unredeemed certificates expire.',
+    missing:['Certificate issuance, amount and redemption status are unknown.'],
+    sourceUrl:costcoFaq, documentTitle:'Costco Credit Card Reward Certificate FAQs', section:'Issuance, redemption and expiration (pages 1–2)', page:2,
+    retrievedAt:reviewed, evidenceStatus:'terms_reviewed', tracking:{kind:'annual_certificate'},
+  }),
+  defineBenefit({
+    id:'costco-foreign', cardId:'citi-costco', title:'No foreign transaction fees', category:'Rewards', topic:'international',
+    summary:'No issuer foreign transaction fee on purchases.', use:'Use the card abroad.',
+    sourceUrl:costcoProduct, documentTitle:'Costco Anywhere Visa Card by Citi', section:'Foreign transaction fee FAQ',
+    retrievedAt:reviewed, evidenceStatus:'summary_only', tracking:{kind:'ongoing'},
+  }),
+  defineBenefit({
+    id:'costco-rental', cardId:'citi-costco', title:'Worldwide car rental insurance', category:'Protections', topic:'rental',
+    summary:'Eligible rental damage or theft may be covered.',
+    use:'Verify your applicable guide before relying on coverage.',
+    payment:'Pay with the card and decline the rental company’s collision/loss damage insurance.',
+    limit:'Current coverage limits require the applicable guide.', exclusions:'Vehicle, rental and claim restrictions apply; approval is not guaranteed.',
+    missing:['Applicable guide and rental eligibility are unverified.'],
+    sourceUrl:costcoProduct, documentTitle:'Costco Anywhere Visa Card by Citi', section:'Worldwide Car Rental Insurance',
+    retrievedAt:reviewed, evidenceStatus:'summary_only', tracking:{kind:'ongoing'},
+    timing:{group:'per_use',label:'Per qualifying rental'},
+  }),
+  defineBenefit({
+    id:'costco-purchase', cardId:'citi-costco', title:'Damage and theft purchase protection', category:'Protections', topic:'protection',
+    summary:'Eligible purchases may be protected for 120 days; 90 days for New York residents.',
+    use:'Review the applicable guide before claiming.', payment:'Qualifying card purchases.',
+    exclusions:'Item and claim exclusions apply.', missing:['Purchase eligibility and applicable guide are unverified.'],
+    sourceUrl:costcoProduct, documentTitle:'Costco Anywhere Visa Card by Citi', section:'Damage & Theft Purchase Protection',
+    retrievedAt:reviewed, evidenceStatus:'summary_only', tracking:{kind:'ongoing'},
+    timing:{group:'per_use',label:'Per qualifying purchase'},
+  }),
+  defineBenefit({
+    id:'costco-roadside', cardId:'citi-costco', title:'Roadside dispatch assistance', category:'Protections', topic:'travel',
+    summary:'Request roadside dispatch in the U.S., Puerto Rico or U.S. Virgin Islands.',
+    use:'Contact the benefits provider for help.', limit:'Dispatch access; not a repair or towing credit.',
+    exclusions:'You pay the costs of services provided.',
+    sourceUrl:costcoArticle, documentTitle:'Unlock Costco Credit Card Benefits', section:'Travel benefits — Roadside Assistance Dispatch Service',
+    retrievedAt:reviewed, evidenceStatus:'summary_only', tracking:{kind:'ongoing'},
+    timing:{group:'per_use',label:'When roadside help is needed'},
+  }),
+  defineBenefit({
+    id:'costco-travel-assistance', cardId:'citi-costco', title:'Travel and emergency assistance', category:'Protections', topic:'travel',
+    summary:'Access travel, medical and legal referrals around the clock.',
+    use:'Contact the benefits provider before or during travel.', limit:'Referral assistance, not insurance reimbursement.',
+    exclusions:'Referrals are free; you pay for services used.',
+    sourceUrl:costcoArticle, documentTitle:'Unlock Costco Credit Card Benefits', section:'Travel benefits — Travel & Emergency Assistance',
+    retrievedAt:reviewed, evidenceStatus:'summary_only', tracking:{kind:'ongoing'},
+    timing:{group:'per_use',label:'When travel assistance is needed'},
+  }),
+];

@@ -1,0 +1,100 @@
+.ask-page { max-width: 900px; margin: 0 auto; }
+.ask-intro { margin-bottom: 28px; }
+.ask-intro h1 { margin: 10px 0 10px; font-size: clamp(30px, 4vw, 42px); letter-spacing: -.04em; line-height: 1.15; }
+.ask-intro > p { margin: 0; line-height: 1.6; }
+.ask-composer { padding: 22px 24px 17px; border: 1px solid var(--line); border-radius: 22px; background: #fff; box-shadow: 0 8px 30px #1b3a6b06; }
+.ask-scope { display: flex; align-items: center; justify-content: space-between; gap: 14px; font-size: 13px; color: var(--sub); margin-bottom: 16px; }
+.ask-scope > span { display: inline-flex; gap: 8px; align-items: center; }
+.ask-scope .ps-visual-icon { color: var(--blue); }
+.ask-composer textarea { display: block; resize: vertical; width: 100%; min-height: 112px; max-height: 300px; border: 0; background: transparent; padding: 8px 0; color: var(--ink); font: inherit; font-size: 18px; line-height: 1.6; border-radius: 5px; }
+.ask-composer textarea::placeholder { color: #768198; opacity: 1; }
+.ask-composer textarea:focus-visible { outline: 2px solid var(--blue); outline-offset: 7px; }
+.ask-form-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 12px; }
+.ask-form-actions > span { font-size: 12px; }
+.ask-form-actions .primary { white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 9px; }
+.ask-privacy { margin: 19px 0 0; padding-top: 13px; border-top: 1px solid var(--line); font-size: 12px; line-height: 1.5; color: var(--sub); }
+.ask-examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; }
+.ask-examples button { border: 1px solid var(--line); border-radius: 100px; background: #fff; color: var(--sub); padding: 9px 13px; font: inherit; font-size: 12px; cursor: pointer; transition: background .15s, border-color .15s; }
+.ask-examples button:hover:not(:disabled) { color: var(--blue); border-color: #b9caff; background: var(--soft); }
+.ask-examples button .ps-visual-icon { margin-left: 5px; vertical-align: -2px; }
+.ask-page button:disabled { opacity: .55; cursor: not-allowed; }
+.ask-start-note { margin: 32px 0 0; font-size: 13px; line-height: 1.6; text-align: center; color: var(--sub); }
+.ask-loading { display: flex; align-items: center; gap: 14px; border-radius: 16px; background: var(--soft); padding: 23px; margin-top: 28px; }
+.ask-loading strong { font-size: 14px; font-weight: 650; }
+.ask-loading p { font-size: 13px; margin: 5px 0 0; color: var(--sub); }
+.ask-loading > button { margin-left: auto; }
+.ask-spinner { width: 21px; height: 21px; flex: 0 0 21px; border: 2px solid #d0dcff; border-top-color: var(--blue); border-radius: 50%; animation: ask-spin .8s linear infinite; }
+@keyframes ask-spin { to { transform: rotate(360deg); } }
+.ask-error { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.ask-error p { flex: 1; margin: 0; }
+.ask-answer { margin-top: 35px; }
+.ask-answer-heading h2 { font-size: 24px; letter-spacing: -.025em; margin: 8px 0 12px; }
+.ask-answer-heading > p { font-size: 14px; line-height: 1.7; color: var(--sub); margin: 0; }
+.ask-followup { background: var(--soft); border: 1px solid #d9e4ff; border-radius: 16px; padding: 18px 20px; margin: 22px 0; }
+.ask-followup p { margin: 0 0 14px; font-size: 14px; font-weight: 600; line-height: 1.6; }
+.ask-followup > div { display: flex; flex-wrap: wrap; gap: 10px; }
+.ask-followup .secondary { font-size: 12px; background: #fff; }
+.ask-benefit-list { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #fff; margin-top: 24px; }
+.ask-benefit-row { padding: 22px 24px; }
+.ask-benefit-row + .ask-benefit-row { border-top: 1px solid var(--line); }
+.ask-card-label { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; color: var(--sub); }
+.ask-card-dot { display: inline-block; width: 16px; height: 11px; border-radius: 3px; background: linear-gradient(135deg,#4d647b,#13273e); }
+.ask-card-dot.reserve { background: linear-gradient(135deg,#657caa,#172a5b); }
+.ask-card-dot.bofa-travel { background: linear-gradient(135deg,#75809a,#344561); }
+.ask-card-dot.discover-cashback { background: linear-gradient(135deg,#eeae6d,#9e5324); }
+.ask-card-dot.citi-custom { background: linear-gradient(135deg,#2880ba,#174568); }
+.ask-card-dot.citi-costco { background: linear-gradient(135deg,#758790,#38454c); }
+.ask-benefit-copy h3 { margin: 8px 0 7px; font-size: 17px; line-height: 1.4; }
+.ask-benefit-copy h3 button, .ask-evidence-gaps h4 button { display: inline; border: 0; padding: 0; background: none; color: var(--ink); text-align: left; font: inherit; font-weight: 650; cursor: pointer; }
+.ask-benefit-copy h3 button:hover, .ask-evidence-gaps h4 button:hover { color: var(--blue); }
+.ask-benefit-copy h3 button .ps-visual-icon, .ask-evidence-gaps h4 button .ps-visual-icon { color: var(--blue); margin-left: 5px; vertical-align: -2px; }
+.ask-fit { color: var(--sub); font-size: 13px; line-height: 1.65; margin: 0; }
+.ask-answer-details { margin-top: 14px; font-size: 13px; color: var(--sub); line-height: 1.7; }
+.ask-answer-details > summary { cursor: pointer; color: var(--blue); width: fit-content; font-size: 12px; font-weight: 600; }
+.ask-answer-details[open] > summary { margin-bottom: 15px; }
+.ask-answer-details > p { margin: 0 0 15px; }
+.ask-answer-details dl { margin: 0; }
+.ask-answer-details dl > div { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 16px; margin-bottom: 12px; }
+.ask-answer-details dt { font-weight: 650; color: var(--ink); }
+.ask-answer-details dd { margin: 0; }
+.ask-answer-details dd p { margin: 0 0 5px; }
+.ask-claim-reference { font-size: 10px; text-decoration: none; vertical-align: super; margin-left: 4px; color: var(--blue); white-space: nowrap; }
+.ask-claim-reference:hover { text-decoration: underline; }
+.ask-conditions-note { padding: 12px 15px; border-radius: 10px; background: #f7f9fc; margin: 17px 0; }
+.ask-conditions-note strong { color: var(--ink); font-size: 12px; }
+.ask-conditions-note ul { padding-left: 18px; margin: 5px 0 0; }
+.ask-sources { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 14px; }
+.ask-sources h4 { color: var(--ink); font-size: 12px; margin: 0 0 12px; }
+.ask-source + .ask-source { margin-top: 18px; }
+.ask-source > a { color: var(--blue); font-size: 12px; overflow-wrap: anywhere; }
+.ask-source > a .ps-visual-icon { vertical-align: -1px; }
+.ask-source p { font-size: 11px; line-height: 1.7; margin: 4px 0 0; }
+.ask-source-version { overflow-wrap: anywhere; }
+.ask-source-excerpt { border-left: 2px solid #dce5f7; padding-left: 11px; }
+.ask-evidence-label { color: #88530c; }
+.ask-evidence-gaps { margin-top: 25px; background: #fffaf0; border: 1px solid #eee0c4; border-radius: 16px; padding: 21px 24px; }
+.ask-evidence-gaps > h3 { margin: 0 0 7px; font-size: 15px; }
+.ask-evidence-gaps > p { margin: 0; font-size: 12px; line-height: 1.6; }
+.ask-evidence-gaps > article { margin-top: 17px; padding-top: 17px; border-top: 1px solid #e9dfcc; }
+.ask-evidence-gaps h4 { margin: 6px 0; font-size: 15px; line-height: 1.45; }
+.ask-evidence-gaps article > p { font-size: 13px; line-height: 1.65; margin: 5px 0; color: var(--sub); }
+.ask-notices { margin-top: 23px; font-size: 12px; color: var(--sub); line-height: 1.7; }
+.ask-notices summary { cursor: pointer; width: fit-content; }
+.ask-notices p { margin: 10px 0; }
+@media (max-width: 600px) {
+  .ask-intro { margin-bottom: 22px; }
+  .ask-composer { padding: 17px 17px 14px; border-radius: 18px; }
+  .ask-composer textarea { font-size: 16px; min-height: 127px; }
+  .ask-form-actions { justify-content: flex-end; }
+  .ask-form-actions > span { display: none; }
+  .ask-form-actions .primary { width: 100%; }
+  .ask-scope { font-size: 12px; }
+  .ask-examples { gap: 7px; }
+  .ask-examples button { font-size: 11px; padding: 9px 11px; }
+  .ask-benefit-row, .ask-evidence-gaps { padding: 19px 18px; }
+  .ask-answer-details dl > div { grid-template-columns: 1fr; gap: 3px; }
+  .ask-loading { padding: 18px 14px; gap: 10px; }
+  .ask-loading strong { font-size: 13px; }
+  .ask-loading p { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .ask-spinner { animation: none; } }
