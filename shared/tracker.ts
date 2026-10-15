@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import type {Bundle} from './catalog';
+import type {Bundle} from './catalog.js';
 export const DateValue=z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(v=>!Number.isNaN(Date.parse(v))&&new Date(v).toISOString().slice(0,10)===v);
 const optionalDate=DateValue.or(z.literal(''));
 export const BenefitInput=z.object({enrollment:z.enum(['unknown','not_enrolled','enrolled']).default('unknown'),enrolledOn:optionalDate.default(''),confirmedExpiry:optionalDate.default(''),lastReimbursed:optionalDate.default(''),periodStart:optionalDate.default(''),periodEnd:optionalDate.default(''),used:z.number().finite().min(0).nullable().default(null),usagePeriod:z.string().default('')});

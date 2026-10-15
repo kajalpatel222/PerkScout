@@ -1,4 +1,4 @@
-import {defineBenefit} from '../catalog-entry';
+import {defineBenefit} from '../catalog-entry.js';
 
 const reviewed = '2026-10-13';
 const customTerms = 'https://www.citi.com/usc/Multi/Featured/default.htm';

@@ -1,4 +1,4 @@
-import {defineBenefit} from '../catalog-entry';
+import {defineBenefit} from '../catalog-entry.js';
 
 const product = 'https://www.discover.com/credit-cards/cash-back/it-card/';
 const accountFaq = 'https://www.capitalone.com/updates/discover/card-faqs/';

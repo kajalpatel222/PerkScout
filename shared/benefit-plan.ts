@@ -1,5 +1,5 @@
-import type { Bundle } from './catalog';
-import { DateValue } from './tracker';
+import type { Bundle } from './catalog.js';
+import { DateValue } from './tracker.js';
 
 export type BenefitPlan = {
   date: string | null;

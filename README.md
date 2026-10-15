@@ -8,7 +8,12 @@ Node 22.13+ required (built-in experimental SQLite).
 npm install
 npm run dev
 ```
-Use the Local URL printed by Vite (currently http://127.0.0.1:5175). API runs on loopback port 3001. `npm run build` checks TypeScript and builds the UI. `node --import tsx --test tests/*.test.ts` runs the tests without tsx CLI IPC requirements. A production deployment needs both API and frontend with an `/api` reverse proxy.
+Use the Local URL printed by Vite (currently http://127.0.0.1:5175). API runs on loopback port 3001. `npm run build` checks TypeScript, compiles the API to `server-dist`, and builds the UI to `dist`. `npm test` runs the tests. `npm start` runs the compiled API locally; Vite provides the frontend during development.
+
+## Vercel deployment
+The Vercel configuration serves the Vite build and rewrites `/api/*` to one Express function. `api/index.js` imports the compiled backend; the function does not open a listening port. The `vercel-build` hook compiles the backend before the API builder traces its dependencies, independently of the frontend build. Node 22.x is required for built-in SQLite. Each function instance creates its own in-memory index from the bundled curated corpus, so no persistent disk, external database, API key, or paid model service is needed. Selected cards remain in the visitor's browser storage.
+
+Use the Hobby plan for this personal, noncommercial demo, with the included Vercel URL and no paid add-ons. Deploy from GitHub using the repository's build settings, or use the Vercel CLI. Verify `/api/health`, `/api/catalog`, and a cited `/api/ask` response before sharing the URL. Local databases, preview screenshots, and environment files are excluded from CLI uploads. Vercel usage limits still apply; future external API integrations would have separate costs.
 
 ## Product plan and implemented scope
 Phase one has three routes: **Explore**, **Cards / My cards**, and **Ask**. Explore starts with illustrated Travel, Food & rides, and Shopping shortcuts, plus an all-benefits view. Card guides show the complete curated inventory. Both routes open the same accessible benefit drawer with timing, enrollment/payment, exclusions, and expandable source metadata. With no selection, users can browse all six cards. An optional card-name selection filters Explore and Ask and is stored in `perkscout-selected-cards-v1` in this browser.
@@ -26,7 +31,7 @@ Account connections remain phase two. No connection controls, fake live mode, pu
 The new cards distinguish earned rewards from free credits: Discover has a quarterly activation/spending cap, Custom Cash follows billing cycles, and Costco certificates have an annual redemption deadline conditional on issuance. Neither earning caps nor available points are treated as remaining credits. BofA/Discover account-transition conditions remain explicit; current account terms should be checked. Custom Cash is supported for existing cardholders.
 
 ## Evidence and retrieval
-`server/corpus.ts` holds reviewed paraphrases, exact source URLs, document titles, section/page, card variant, available effective/updated dates, review date and rule definitions. `shared/catalog.ts` validates the corpus and API catalog payload. SQLite persists benefit JSON and SHA-256 hashes of the curated records, passages, FTS5 index, and concept vectors. These hashes identify our curated records, not original webpage snapshots.
+`server/corpus.ts` holds reviewed paraphrases, exact source URLs, document titles, section/page, card variant, available effective/updated dates, review date and rule definitions. `shared/catalog.ts` validates the corpus and API catalog payload. The in-memory SQLite index holds benefit JSON and SHA-256 hashes of the curated records, passages, FTS5 index, and concept vectors. These hashes identify our curated records, not original webpage snapshots.
 
 The public Capital One Visa Infinite guide linked by the issuer states benefits effective October 1, 2021. Its listed protections remain visible for discovery but are marked version-unverified; their date tracking is disabled. Relevant protections can appear in chat as separate cited evidence gaps, never as confirmed coverage. No assumption is made that a guide's old date means it is expired or that the issuer link proves it applies to every account today. Full claims, exclusions, and account applicability need further verification. No PDF upload pipeline exists yet.
 

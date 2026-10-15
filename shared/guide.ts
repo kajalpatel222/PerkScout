@@ -1,4 +1,4 @@
-import type {Bundle} from './catalog';
+import type {Bundle} from './catalog.js';
 
 export type SituationId = 'travel' | 'food-rides' | 'shopping';
 

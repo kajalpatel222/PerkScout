@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import {cards,cardId,cardIds} from './cards';
-export {cards,cardId,cardIds,type CardId} from './cards';
+import {cards,cardId,cardIds} from './cards.js';
+export {cards,cardId,cardIds,type CardId} from './cards.js';
 export const RequestSchema = z.object({question:z.string().trim().min(3).max(1500),cards:z.array(cardId).min(1).max(cardIds.length),asOf:z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(v=> !Number.isNaN(Date.parse(v)) && new Date(v).toISOString().slice(0,10)===v).default('2026-10-13'),facts:z.object({priorityPassEnrolled:z.boolean().optional()}).default({})});
 export const CitationSchema=z.object({id:z.string(),sourceUrl:z.string().url(),documentTitle:z.string(),cardId,section:z.string(),page:z.number().nullable(),effectiveFrom:z.string().nullable(),effectiveTo:z.string().nullable(),retrievedAt:z.string(),policyVersionId:z.string(),evidenceStatus:z.enum(['terms_reviewed','summary_only','version_unverified','conflicting']),excerpt:z.string()});
 export const ClaimSchema=z.object({text:z.string(),citationIds:z.array(z.string()).min(1)});

@@ -1,10 +1,5 @@
-import express from 'express';
-import { corpus } from './corpus.js';
-import { RequestSchema } from '../shared/schema.js';
-import { createRetriever, answer } from './rag.js';
-const app=express(); const retriever=createRetriever('data/corpus.sqlite');
-app.use(express.json({limit:'8kb'}));
-app.post('/api/ask',(req,res)=>{const parsed=RequestSchema.safeParse(req.body);if(!parsed.success){res.status(400).json({error:'Choose a card, enter a question, and use a valid date.'});return;}try{res.json(answer(parsed.data,retriever));}catch{res.status(500).json({error:'The local evidence search failed. Please retry.'});}});
-app.get('/api/catalog',(_,res)=>res.json(corpus));
-app.get('/api/health',(_,res)=>res.json({ok:true,mode:'local-extractive-demo'}));
-app.listen(3001,'127.0.0.1',()=>console.log('PerkScout API: http://127.0.0.1:3001'));
+import app from './app.js';
+
+const port = Number(process.env.PORT || 3001);
+const host = process.env.HOST || '127.0.0.1';
+app.listen(port, host, () => console.log(`PerkScout API: http://${host}:${port}`));
